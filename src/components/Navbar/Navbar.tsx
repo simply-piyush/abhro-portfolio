@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Instagram, Linkedin, Github } from "lucide-react";
+import { Instagram, Linkedin, Github } from "lucide-react";
 import { NavLinks } from "./NavLinks";
 import { MobileMenu } from "./MobileMenu";
 
@@ -28,9 +28,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
     if (onNavClick) {
       onNavClick(id);
     } else {
+      if (id === "hero") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
       const el = document.getElementById(id);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        const isMobile = window.innerWidth < 768;
+        // Offset for floating navbar + breathing space
+        const topOffset = isMobile ? 100 : 85;
+        const elementTop = el.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: Math.max(0, elementTop - topOffset),
+          behavior: "smooth",
+        });
       }
     }
   };
@@ -64,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
         {/* Right: Desktop Social Links */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/_abhro___?rpxt=MWF0cml0dmRiMXcwbQ=="
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram Profile"
@@ -73,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
             <Instagram size={19} strokeWidth={1.8} />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/abhro-saha-9b7241431?utm_source=share_via&utm_content=profile&utm_medium=member_android"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
@@ -96,15 +107,43 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-expanded={mobileOpen}
           aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
-          className="md:hidden p-1.5 rounded-lg text-black hover:bg-black/5 transition-colors"
+          className="md:hidden relative w-9 h-9 rounded-full flex items-center justify-center hover:bg-black/5 active:scale-90 transition-transform duration-200"
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
+          <div className="w-5 h-5 relative flex items-center justify-center">
+            <span
+              className={`absolute left-0 w-5 h-[2px] bg-neutral-900 rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
+                mobileOpen
+                  ? "top-[9px] rotate-45 bg-brand"
+                  : "top-[3px]"
+              }`}
+            />
+            <span
+              className={`absolute top-[9px] left-0 w-5 h-[2px] bg-neutral-900 rounded-full transition-all duration-200 ease-out ${
+                mobileOpen
+                  ? "opacity-0 scale-x-0"
+                  : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute left-0 w-5 h-[2px] bg-neutral-900 rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
+                mobileOpen
+                  ? "top-[9px] -rotate-45 bg-brand"
+                  : "top-[15px]"
+              }`}
+            />
+          </div>
         </button>
       </nav>
 
       {/* Mobile Drawer Menu */}
-      <MobileMenu isOpen={mobileOpen} onLinkClick={handleLinkClick} />
+      <MobileMenu
+        isOpen={mobileOpen}
+        onLinkClick={handleLinkClick}
+        onClose={() => setMobileOpen(false)}
+      />
     </header>
   );
 };

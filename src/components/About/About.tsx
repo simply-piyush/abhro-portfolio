@@ -9,7 +9,7 @@ export const About: React.FC = () => {
     <section
       id="about"
       aria-label="About Me"
-      className="relative w-full min-h-[800px] sm:min-h-[960px] lg:min-h-[1024px] bg-white overflow-hidden flex items-center justify-center pt-24 pb-36 sm:pb-48 md:pb-56 px-4 select-none"
+      className="relative w-full min-h-[800px] sm:min-h-[960px] lg:min-h-[1024px] bg-white overflow-hidden flex items-center justify-center pt-24 pb-36 sm:pb-48 md:pb-56 px-4 select-none scroll-mt-24"
     >
       {/* Background Kinetic Typography Marquee */}
       <AboutBackground />

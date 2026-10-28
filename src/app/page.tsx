@@ -21,12 +21,12 @@ export default function Home() {
         socials={[
           {
             label: "Instagram",
-            href: "https://instagram.com",
+            href: "https://www.instagram.com/_abhro___?rpxt=MWF0cml0dmRiMXcwbQ==",
             icon: <Instagram size={17} strokeWidth={1.8} />,
           },
           {
             label: "LinkedIn",
-            href: "https://linkedin.com",
+            href: "https://www.linkedin.com/in/abhro-saha-9b7241431?utm_source=share_via&utm_content=profile&utm_medium=member_android",
             icon: <Linkedin size={17} strokeWidth={1.8} />,
           },
           {

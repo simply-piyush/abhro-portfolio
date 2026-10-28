@@ -37,3 +37,8 @@ next-env.d.ts
 
 # project assets (hosted on Cloudinary)
 /public/assets/projects/
+
+# design / reference files
+final_frame.png
+image 4.png
+figma_final_node.json

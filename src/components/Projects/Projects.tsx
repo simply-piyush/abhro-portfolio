@@ -41,7 +41,7 @@ export const Projects: React.FC = () => {
     <section
       id="projects"
       aria-label="Projects Showcase"
-      className="relative w-screen w-[100vw] max-w-[100vw] min-h-[600px] h-[92dvh] md:h-screen max-h-[100dvh] md:max-h-[960px] -mt-16 sm:-mt-24 md:-mt-32 z-20 select-none flex flex-col justify-center px-0 py-2 sm:py-4"
+      className="relative w-screen w-[100vw] max-w-[100vw] min-h-[600px] h-[92dvh] md:h-screen max-h-[100dvh] md:max-h-[960px] -mt-16 sm:-mt-24 md:-mt-32 z-20 select-none flex flex-col justify-center px-0 py-2 sm:py-4 scroll-mt-24"
     >
       {/* Black Container matching Figma Rectangle 12 (rounded-48px) spanning 100vw */}
       <div className="w-full h-full bg-black rounded-[24px] sm:rounded-[36px] md:rounded-[48px] p-4 sm:p-6 md:p-8 lg:p-10 text-white overflow-hidden shadow-2xl flex flex-col justify-between border border-neutral-900">

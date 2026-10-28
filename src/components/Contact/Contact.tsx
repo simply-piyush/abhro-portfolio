@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Copy, Check, Send, Mail, CheckCircle2 } from "lucide-react";
 
 export const Contact: React.FC = () => {
-  const email = "abc@gmail.com";
+  const email = "abhrosaha001@gmail.com";
   const [copied, setCopied] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -45,7 +45,7 @@ export const Contact: React.FC = () => {
     <section
       id="contact"
       aria-label="Contact Section"
-      className="relative w-full bg-portfolio-bg py-16 sm:py-24 px-4 sm:px-8 md:px-12"
+      className="relative w-full bg-portfolio-bg py-16 sm:py-24 px-4 sm:px-8 md:px-12 scroll-mt-24"
     >
       <div className="w-full max-w-[1240px] mx-auto">
         {/* Contact Container Box matching Figma Rectangle 14 (rounded-12px, #D9D9D9) */}
@@ -168,7 +168,7 @@ export const Contact: React.FC = () => {
                       <span>PREPARING...</span>
                     ) : (
                       <>
-                        <span>SEND INQUIRY TO {email}</span>
+                        <span>SEND INQUIRY</span>
                         <Send size={16} />
                       </>
                     )}
