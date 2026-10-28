@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #c4c4c4;
+  --color-dark: #000000;
+  --color-card: #d9d9d9;
+  --color-brand: #db4726;
+  --color-brand-bright: #ff522b;
+  --color-white: #ffffff;
+  --font-narina: var(--font-narnia);
+}
+
+@font-face {
+  font-family: 'Narnia';
+  src: url('/fonts/Narnia.otf') format('opentype'),
+       url('/fonts/Narnia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Narina';
+  src: url('/fonts/Narnia.otf') format('opentype'),
+       url('/fonts/Narnia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-bg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #db4726;
+  color: #ffffff;
+}
+
+/* Custom Outlined Text for Kinetic Typography */
+.text-stroke-brand {
+  -webkit-text-stroke: 2px #ff522b;
+  color: transparent;
+}
+
+.text-stroke-brand-white {
+  -webkit-text-stroke: 2px #ff522b;
+  color: #ffffff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #b5b5b5;
+}
+::-webkit-scrollbar-thumb {
+  background: #db4726;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff522b;
+}
