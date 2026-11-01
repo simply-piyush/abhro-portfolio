@@ -41,10 +41,10 @@ export const Projects: React.FC = () => {
     <section
       id="projects"
       aria-label="Projects Showcase"
-      className="relative w-screen w-[100vw] max-w-[100vw] min-h-[600px] h-[92dvh] md:h-screen max-h-[100dvh] md:max-h-[960px] -mt-16 sm:-mt-24 md:-mt-32 z-20 select-none flex flex-col justify-center px-0 py-2 sm:py-4 scroll-mt-24"
+      className="relative w-full min-h-[680px] sm:min-h-[740px] md:min-h-[800px] h-[94dvh] md:h-screen max-h-[1040px] -mt-16 sm:-mt-24 md:-mt-32 z-20 select-none flex flex-col justify-center bg-black rounded-t-[24px] sm:rounded-t-[36px] md:rounded-t-[48px] rounded-b-none overflow-hidden shadow-2xl border-t border-neutral-900"
     >
-      {/* Black Container matching Figma Rectangle 12 (rounded-48px) spanning 100vw */}
-      <div className="w-full h-full bg-black rounded-[24px] sm:rounded-[36px] md:rounded-[48px] p-4 sm:p-6 md:p-8 lg:p-10 text-white overflow-hidden shadow-2xl flex flex-col justify-between border border-neutral-900">
+      {/* 100vw Black Container with Inner Content aligned to page max-width and generous top spacing */}
+      <div className="w-full max-w-[1380px] h-full mx-auto px-3 sm:px-6 md:px-10 pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-4 sm:pb-6 md:pb-8 text-white flex flex-col justify-between overflow-hidden">
         {/* Header with Title and Nav Controls */}
         <ProjectsHeader
           activeIdx={activeIdx}
@@ -54,7 +54,7 @@ export const Projects: React.FC = () => {
         />
 
         {/* Gallery Area: Desktop Accordion & Mobile Swipe Carousel */}
-        <div className="flex-1 min-h-0 w-full my-1 sm:my-2 relative overflow-hidden">
+        <div className="flex-1 min-h-0 w-full my-2 sm:my-3 relative overflow-hidden">
           <DesktopGallery
             projects={PROJECTS}
             activeIdx={activeIdx}
@@ -70,28 +70,6 @@ export const Projects: React.FC = () => {
             carouselRef={mobileCarouselRef}
           />
         </div>
-
-        {/* Footer Info Ribbon */}
-        {currentProject && (
-          <div className="shrink-0 pt-2.5 sm:pt-3 border-t border-neutral-900 flex items-center justify-between text-xs text-neutral-400 font-mono gap-2">
-            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-              <span className="text-white font-semibold flex items-center gap-1.5 truncate">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
-                <span className="truncate">{currentProject.title}</span>
-              </span>
-              <span className="hidden sm:inline text-neutral-600">•</span>
-              <span className="hidden sm:inline text-neutral-400 truncate">
-                {currentProject.category}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2 shrink-0">
-              <span className="text-[11px] sm:text-xs text-neutral-400 font-mono">
-                {currentProject.tools.slice(0, 3).join(" / ")}
-              </span>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Lightbox / Modal for Expanded Preview */}

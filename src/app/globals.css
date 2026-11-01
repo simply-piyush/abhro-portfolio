@@ -36,7 +36,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
   background-color: var(--color-bg);
   color: var(--color-dark);
 }

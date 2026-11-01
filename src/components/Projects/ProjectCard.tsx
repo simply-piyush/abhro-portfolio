@@ -230,13 +230,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
       {/* Bottom Content Area */}
       <div className="relative z-20 p-3.5 sm:p-5 flex flex-col justify-end">
-        {/* Category & Year */}
+        {/* Category */}
         <div className="flex items-center gap-2 mb-1 flex-wrap">
           <span className="text-[11px] sm:text-xs font-mono text-brand font-semibold uppercase tracking-wider">
             {project.category}
-          </span>
-          <span className="text-[10px] font-mono text-neutral-400">
-            • {project.year}
           </span>
         </div>
 
@@ -245,18 +242,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           {project.title}
         </h3>
 
-        {/* Expanded Description & Tools (always visible on mobile card, expandable on desktop) */}
+        {/* Tools Pills (visible when active on desktop, or on mobile card) */}
         <div
           className={`overflow-hidden transition-all duration-500 ${
             isActive || isMobile
-              ? "max-h-28 opacity-100 mt-1"
+              ? "max-h-12 opacity-100 mt-1"
               : "max-h-0 opacity-0"
           }`}
         >
-          <p className="text-xs sm:text-sm text-neutral-300 font-sans line-clamp-2 mb-2 leading-relaxed">
-            {project.description}
-          </p>
-
           <div className="flex items-center gap-1.5 flex-wrap">
             {project.tools.slice(0, 3).map((tool, tIdx) => (
               <span

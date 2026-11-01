@@ -34,7 +34,7 @@ export const Contact: React.FC = () => {
       setLoading(false);
       setFormSubmitted(true);
       window.location.href = `mailto:${email}?subject=${encodeURIComponent(
-        formData.subject
+        formData.subject 
       )}&body=${encodeURIComponent(
         `Hi Abhro,\n\nMy name is ${formData.name} (${formData.userEmail}).\n\n${formData.message}`
       )}`;
@@ -45,7 +45,7 @@ export const Contact: React.FC = () => {
     <section
       id="contact"
       aria-label="Contact Section"
-      className="relative w-full bg-portfolio-bg py-16 sm:py-24 px-4 sm:px-8 md:px-12 scroll-mt-24"
+      className="relative w-full bg-portfolio-bg pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-8 md:px-12"
     >
       <div className="w-full max-w-[1240px] mx-auto">
         {/* Contact Container Box matching Figma Rectangle 14 (rounded-12px, #D9D9D9) */}

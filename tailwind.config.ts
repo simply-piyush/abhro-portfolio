@@ -9,6 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        background: "#C4C4C4",
+        foreground: "#000000",
+        card: {
+          DEFAULT: "#D9D9D9",
+          foreground: "#000000",
+        },
+        muted: {
+          DEFAULT: "#E5E5E5",
+          foreground: "#525252",
+        },
+        ring: "#DB4726",
         brand: {
           DEFAULT: "#DB4726",
           bright: "#FF522B",

@@ -13,6 +13,11 @@ export interface Project {
   color: string;
   accentColor: string;
   stats?: { label: string; value: string }[];
+  likes: number;
+  commentsCount: number;
+  timeAgo: string;
+  tags: string[];
+  location: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -31,6 +36,11 @@ export const PROJECTS: Project[] = [
       "A cinematic night ocean simulation exploring turbulent water displacement, atmospheric fog scattering, and a lone maritime beacon piercing through the dark waves.",
     color: "#0a192f",
     accentColor: "#DB4726",
+    likes: 9311,
+    commentsCount: 987,
+    timeAgo: "5 DAYS AGO",
+    tags: ["blender", "oceansimulation", "3danimation", "cycles", "vfx", "cgi"],
+    location: "Blender 4.2 • Cycles",
     stats: [
       { label: "Render Engine", value: "Cycles" },
       { label: "Simulation", value: "Ocean Displacement" },
@@ -52,6 +62,11 @@ export const PROJECTS: Project[] = [
       "A vibrant 3D vignette featuring an articulated tree frog perched atop lilypads in a mountain sanctuary, accompanied by fluttering butterfly dynamics.",
     color: "#1e3a2f",
     accentColor: "#2ecc71",
+    likes: 5420,
+    commentsCount: 382,
+    timeAgo: "1 WEEK AGO",
+    tags: ["creaturedesign", "characterart", "blender3d", "nature", "render"],
+    location: "Blender 3D • Procedural",
     stats: [
       { label: "Rig Type", value: "Skeletal Deform" },
       { label: "Lighting", value: "Daylight HDRi" },
@@ -72,6 +87,11 @@ export const PROJECTS: Project[] = [
       "Commercial product poster design showcasing dynamic fluid splash dynamics, floating Oreo cookie physics, and bold marketing typography.",
     color: "#004b91",
     accentColor: "#00a8ff",
+    likes: 7180,
+    commentsCount: 491,
+    timeAgo: "2 WEEKS AGO",
+    tags: ["photoshop", "commercialart", "fluidsim", "posterdesign", "cgi"],
+    location: "Adobe Photoshop • CGI Splash",
     stats: [
       { label: "Client Style", value: "Cadbury Oreo" },
       { label: "Medium", value: "CGI Compositing" },
@@ -87,11 +107,16 @@ export const PROJECTS: Project[] = [
     type: "image",
     src: "https://res.cloudinary.com/o46echks/image/upload/v1793205568/image-2.jpg",
     year: "2024",
-    tools: [ "Photoshop"],
+    tools: ["Photoshop"],
     description:
       "Striking product showcase of the crimson and gold Phoenix Pulse wireless headphones, combining sleek metallic reflections with distressed grunge display lettering.",
     color: "#4a0e17",
     accentColor: "#DB4726",
+    likes: 4290,
+    commentsCount: 215,
+    timeAgo: "3 WEEKS AGO",
+    tags: ["productvisualization", "industrialdesign", "poster", "audio"],
+    location: "Photoshop • Key Visual",
     stats: [
       { label: "Material", value: "Anodized Gold & Leather" },
       { label: "Type", value: "Product Key Visual" },
@@ -107,11 +132,16 @@ export const PROJECTS: Project[] = [
     type: "image",
     src: "https://res.cloudinary.com/o46echks/image/upload/v1793205568/image-1.jpg",
     year: "2024",
-    tools: [ "Photoshop"],
+    tools: ["Photoshop"],
     description:
       "A comprehensive brand brochure demonstrating color harmony, grid-based specifications, product catalog spreads, and promotional marketing collateral.",
     color: "#2b2d42",
     accentColor: "#e63946",
+    likes: 3150,
+    commentsCount: 164,
+    timeAgo: "1 MONTH AGO",
+    tags: ["brandidentity", "editorialdesign", "typography", "catalog"],
+    location: "Editorial & Layout",
     stats: [
       { label: "Pages", value: "3-Spread Catalog" },
       { label: "Grid", value: "Swiss Modular" },
@@ -127,11 +157,16 @@ export const PROJECTS: Project[] = [
     type: "image",
     src: "https://res.cloudinary.com/o46echks/image/upload/v1793205568/image-3.jpg",
     year: "2023",
-    tools: [ "Photoshop"],
+    tools: ["Photoshop"],
     description:
       "Print production wrap cover paying homage to Shonen Jump and the Bleach universe, capturing intense character expressions and authentic publishing aesthetics.",
     color: "#8B0000",
     accentColor: "#FF4500",
+    likes: 8940,
+    commentsCount: 720,
+    timeAgo: "1 MONTH AGO",
+    tags: ["shonenjump", "bleach", "mangaart", "digitalpainting", "wrapcover"],
+    location: "Digital Illustration",
     stats: [
       { label: "Format", value: "Tankobon Wrap" },
       { label: "Art Style", value: "Ink & Screentone" },
@@ -147,11 +182,16 @@ export const PROJECTS: Project[] = [
     type: "image",
     src: "https://res.cloudinary.com/o46echks/image/upload/v1793205570/image-5.jpg",
     year: "2023",
-    tools: [ "Photoshop"],
+    tools: ["Photoshop"],
     description:
       "Curated visual identity moodboard exploring luxury emerald and champagne tones, watch movement textures, typography pairings, and timeless brand motifs.",
     color: "#044731",
     accentColor: "#c0943b",
+    likes: 6310,
+    commentsCount: 345,
+    timeAgo: "2 MONTHS AGO",
+    tags: ["luxurybrand", "artdirection", "moodboard", "horology", "aesthetic"],
+    location: "Creative Direction",
     stats: [
       { label: "Palette", value: "British Racing Green & Gold" },
       { label: "Typography", value: "Playfair & Baskerville" },

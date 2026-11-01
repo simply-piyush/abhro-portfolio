@@ -34,12 +34,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
       }
       const el = document.getElementById(id);
       if (el) {
-        const isMobile = window.innerWidth < 768;
-        // Offset for floating navbar + breathing space
-        const topOffset = isMobile ? 100 : 85;
+        // Sections have custom top padding designed to frame content cleanly below floating navbar
         const elementTop = el.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-          top: Math.max(0, elementTop - topOffset),
+          top: Math.max(0, Math.round(elementTop)),
           behavior: "smooth",
         });
       }

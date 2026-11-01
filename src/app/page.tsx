@@ -2,6 +2,7 @@ import { Navbar } from "@/components/Navbar/Navbar";
 import { Hero } from "@/components/Hero/Hero";
 import { About } from "@/components/About/About";
 import { Projects } from "@/components/Projects/Projects";
+import { Artworks } from "@/components/Artworks";
 import { Contact } from "@/components/Contact/Contact";
 import { DitheredFooter } from "@/components/Footer";
 import { Instagram, Linkedin, Github } from "lucide-react";
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <About />
       <Projects />
+      <Artworks />
       <Contact />
       <DitheredFooter
         brand="ABHRO"

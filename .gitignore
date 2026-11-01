@@ -25,8 +25,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
+# local and secret env files (hide DB credentials, API keys)
+.env
+.env.local
 .env*.local
+.env.development
+.env.test
+.env.production
+!.env.example
 
 # vercel
 .vercel
@@ -35,8 +41,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# project assets (hosted on Cloudinary)
+# project & artwork assets (hosted on Cloudinary CDN)
 /public/assets/projects/
+/public/assets/artwork/
 
 # design / reference files
 final_frame.png
