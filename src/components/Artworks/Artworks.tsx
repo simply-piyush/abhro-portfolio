@@ -9,7 +9,6 @@ import { TopographyBackground } from "./TopographyBackground";
 export const Artworks: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState<number>(0);
   const sectionRef = useRef<HTMLElement>(null);
-  const topoRef = useRef<HTMLDivElement>(null);
 
   // Scroll-driven opacity: the bg slowly shows up when scrolled from projects
   const { scrollYProgress } = useScroll({
@@ -53,34 +52,11 @@ export const Artworks: React.FC = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handlePrev, handleNext]);
 
-  // Forward pointer movement anywhere on section to topography background
-  const handleSectionPointerMove = (e: React.PointerEvent<HTMLElement>) => {
-    if (topoRef.current && e.target !== topoRef.current) {
-      topoRef.current.dispatchEvent(
-        new PointerEvent("pointermove", {
-          clientX: e.clientX,
-          clientY: e.clientY,
-          bubbles: false,
-        })
-      );
-    }
-  };
-
-  const handleSectionPointerLeave = () => {
-    if (topoRef.current) {
-      topoRef.current.dispatchEvent(
-        new PointerEvent("pointerleave", { bubbles: false })
-      );
-    }
-  };
-
   return (
     <section
       ref={sectionRef}
       id="artworks"
       aria-label="Artworks Showcase"
-      onPointerMove={handleSectionPointerMove}
-      onPointerLeave={handleSectionPointerLeave}
       className="relative w-full bg-black text-white select-none pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-24 md:pb-32 rounded-b-[24px] sm:rounded-b-[36px] md:rounded-b-[48px] border-b border-neutral-900 shadow-2xl z-20 overflow-hidden"
     >
       {/* Interactive Topography Background - slowly shows up when scrolled from projects */}
@@ -90,7 +66,6 @@ export const Artworks: React.FC = () => {
         aria-hidden="true"
       >
         <TopographyBackground
-          ref={topoRef}
           className="size-full"
           lineColor="#888888"
           levels={16}
@@ -101,17 +76,17 @@ export const Artworks: React.FC = () => {
         />
       </motion.div>
 
-      {/* 100vw Black Container with Inner Content aligned to match Projects */}
-      <div className="relative z-10 w-full max-w-[1380px] mx-auto px-3 sm:px-6 md:px-10 pointer-events-auto">
+      {/* 100vw Container with Inner Content aligned to match Projects */}
+      <div className="relative z-10 w-full max-w-[1380px] mx-auto px-3 sm:px-6 md:px-10 pointer-events-none">
         {/* Section Header: Centered Section Title */}
-        <div className="flex justify-center items-center mb-8 sm:mb-12 md:mb-14">
+        <div className="flex justify-center items-center mb-8 sm:mb-12 md:mb-14 pointer-events-auto">
           <h2 className="font-narina text-3xl sm:text-4xl md:text-[42px] lg:text-5xl text-brand tracking-[0.04em] leading-none text-center">
             ARTWORKS
           </h2>
         </div>
 
         {/* Single Instagram Post Frame with horizontally scrollable artworks */}
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center pointer-events-auto">
           <InstagramArtworkCard
             artworks={ARTWORKS}
             currentIdx={activeIdx}

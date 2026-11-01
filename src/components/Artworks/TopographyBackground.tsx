@@ -538,7 +538,10 @@ const TopographyBackgroundContent = React.forwardRef<
     () => containerRef.current as HTMLDivElement,
   );
 
-  const inView = useInView(containerRef);
+  const inView = useInView(containerRef, {
+    margin: "300px 0px",
+    initial: true,
+  });
   const pageVisible = usePageVisible();
   const reduce = Boolean(useReducedMotion());
   const playing = inView && pageVisible && !reduce;
@@ -904,33 +907,55 @@ const TopographyBackgroundContent = React.forwardRef<
     return () => cancelFrame(tick);
   }, [playing]);
 
-  const point = (event: React.PointerEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    return { x: event.clientX - rect.left, y: event.clientY - rect.top };
-  };
+  // Robust pointer tracking for desktop & touch anywhere across container bounds
+  React.useEffect(() => {
+    const container = containerRef.current;
+    if (!container || !interactive || reduce) return;
 
-  return (
-    <div
-      ref={containerRef}
-      data-slot="topography-background"
-      className={cn("relative size-full overflow-hidden", className)}
-      {...props}
-      onPointerMove={(event) => {
-        onPointerMove?.(event);
-        if (!interactive || reduce) return;
-        const { x, y } = point(event);
+    let isInside = false;
+    let lastCoords: { x: number; y: number } | null = null;
+
+    const updatePointer = (clientX: number, clientY: number) => {
+      const rect = container.getBoundingClientRect();
+      if (
+        clientX >= rect.left &&
+        clientX <= rect.right &&
+        clientY >= rect.top &&
+        clientY <= rect.bottom
+      ) {
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
         pointerX.set(x);
         pointerY.set(y);
         raised.set(1);
-      }}
-      onPointerLeave={(event) => {
-        onPointerLeave?.(event);
+        isInside = true;
+      } else if (isInside) {
         raised.set(0);
-      }}
-      onPointerDown={(event) => {
-        onPointerDown?.(event);
-        if (!interactive || reduce) return;
-        const { x, y } = point(event);
+        isInside = false;
+      }
+    };
+
+    const handlePointerMove = (event: PointerEvent) => {
+      lastCoords = { x: event.clientX, y: event.clientY };
+      updatePointer(event.clientX, event.clientY);
+    };
+
+    const handleScroll = () => {
+      if (lastCoords) {
+        updatePointer(lastCoords.x, lastCoords.y);
+      }
+    };
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const rect = container.getBoundingClientRect();
+      if (
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom
+      ) {
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
         pointerX.set(x);
         pointerY.set(y);
         const ripple: Ripple = { x, y, progress: motionValue(0) };
@@ -941,7 +966,36 @@ const TopographyBackgroundContent = React.forwardRef<
         }).then(() => {
           ripplesRef.current = ripplesRef.current.filter((r) => r !== ripple);
         });
-      }}
+      }
+    };
+
+    const handlePointerLeave = () => {
+      raised.set(0);
+      isInside = false;
+      lastCoords = null;
+    };
+
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    window.addEventListener("pointerdown", handlePointerDown, { passive: true });
+    window.addEventListener("pointerleave", handlePointerLeave, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("blur", handlePointerLeave);
+
+    return () => {
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("pointerleave", handlePointerLeave);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("blur", handlePointerLeave);
+    };
+  }, [interactive, reduce, pointerX, pointerY, raised]);
+
+  return (
+    <div
+      ref={containerRef}
+      data-slot="topography-background"
+      className={cn("relative size-full overflow-hidden", className)}
+      {...props}
     >
       <canvas
         ref={canvasRef}
