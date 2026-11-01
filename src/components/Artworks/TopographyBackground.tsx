@@ -9,16 +9,26 @@ import {
   useInView,
   useMotionValue,
   useSpring,
+  useReducedMotion,
   type MotionValue,
   type SpringOptions,
 } from "motion/react";
 
-import {
-  ReducedMotionConfig,
-  useShouldReduceMotion,
-} from "@animate-ui/react/utils/motion";
-import { usePageVisible } from "@animate-ui/react/utils/use-page-visible";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
+
+function usePageVisible() {
+  const [isVisible, setIsVisible] = React.useState(true);
+  React.useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsVisible(document.visibilityState === "visible");
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+  return isVisible;
+}
 
 const CELL = 10;
 const RELAX = 2;
@@ -530,7 +540,7 @@ const TopographyBackgroundContent = React.forwardRef<
 
   const inView = useInView(containerRef);
   const pageVisible = usePageVisible();
-  const reduce = useShouldReduceMotion();
+  const reduce = Boolean(useReducedMotion());
   const playing = inView && pageVisible && !reduce;
 
   const pointerX = useMotionValue(0);
@@ -947,11 +957,7 @@ const TopographyBackground = React.forwardRef<
   HTMLDivElement,
   TopographyBackgroundProps
 >(function TopographyBackground(props, ref) {
-  return (
-    <ReducedMotionConfig>
-      <TopographyBackgroundContent ref={ref} {...props} />
-    </ReducedMotionConfig>
-  );
+  return <TopographyBackgroundContent ref={ref} {...props} />;
 });
 
 export { TopographyBackground, type TopographyBackgroundProps };
