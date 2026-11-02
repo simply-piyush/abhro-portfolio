@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Copy, Check, Send, Mail, CheckCircle2 } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const Contact: React.FC = () => {
   const email = "abhrosaha001@gmail.com";
@@ -52,7 +53,7 @@ export const Contact: React.FC = () => {
         <div className="">
           <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 lg:gap-12">
             {/* Left Column: "Lets Create Together ↗" header */}
-            <div className="shrink-0 mb-6 lg:mb-0 ">
+            <ScrollReveal direction="left" distance={60} duration={0.8} className="shrink-0 mb-6 lg:mb-0 ">
               <h2 className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-[88px] xl:text-[108px] tracking-tight leading-[0.95] lg:leading-[0.88] text-black flex flex-row flex-wrap items-center gap-2 sm:gap-3 lg:flex-col lg:items-start lg:gap-0 select-none">
                 <span>Lets</span>
                 <span className="text-brand font-narina my-0 lg:my-1 xl:my-2">Create</span>
@@ -69,9 +70,10 @@ export const Contact: React.FC = () => {
                   </span>
                 </span>
               </h2>
-            </div>
+            </ScrollReveal>
             {/* Right Column: Send a Quick Message Form */}
-            <div className="w-full lg:max-w-[640px] flex-1 bg-white/90 rounded-2xl p-6 sm:p-8 md:p-10 border border-neutral-300 shadow-sm">
+            <ScrollReveal direction="right" distance={60} duration={0.8} delay={0.1} className="w-full lg:max-w-[640px] flex-1">
+              <div className="bg-white/90 rounded-2xl p-6 sm:p-8 md:p-10 border border-neutral-300 shadow-sm">
               {formSubmitted ? (
                 <div className="py-12 flex flex-col items-center justify-center text-center animate-in fade-in duration-300">
                   <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
@@ -175,7 +177,8 @@ export const Contact: React.FC = () => {
                   </button>
                 </form>
               )}
-            </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>

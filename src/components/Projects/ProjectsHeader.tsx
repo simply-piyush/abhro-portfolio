@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 interface ProjectsHeaderProps {
   activeIdx: number;
@@ -17,7 +18,7 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({
   onNext,
 }) => {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 shrink-0 mb-3 sm:mb-4">
+    <ScrollReveal direction="down" distance={30} duration={0.6} threshold={0.05} className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 shrink-0 mb-3 sm:mb-4">
       <div>
         <div className="flex items-center gap-3 mb-1.5">
           <h2 className="font-narina text-3xl sm:text-4xl md:text-[42px] text-white tracking-[0.04em] leading-none">
@@ -59,6 +60,6 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({
           </button>
         </div>
       </div>
-    </div>
+    </ScrollReveal>
   );
 };

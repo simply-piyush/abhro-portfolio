@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { ARTWORKS } from "@/data/artworks";
 import { InstagramArtworkCard } from "./InstagramArtworkCard";
 import { TopographyBackground } from "./TopographyBackground";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const Artworks: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState<number>(0);
@@ -79,20 +80,20 @@ export const Artworks: React.FC = () => {
       {/* 100vw Container with Inner Content aligned to match Projects */}
       <div className="relative z-10 w-full max-w-[1380px] mx-auto px-3 sm:px-6 md:px-10 pointer-events-none">
         {/* Section Header: Centered Section Title */}
-        <div className="flex justify-center items-center mb-8 sm:mb-12 md:mb-14 pointer-events-auto">
+        <ScrollReveal direction="down" distance={30} duration={0.6} className="flex justify-center items-center mb-8 sm:mb-12 md:mb-14 pointer-events-auto">
           <h2 className="font-narina text-3xl sm:text-4xl md:text-[42px] lg:text-5xl text-brand tracking-[0.04em] leading-none text-center">
             ARTWORKS
           </h2>
-        </div>
+        </ScrollReveal>
 
         {/* Single Instagram Post Frame with horizontally scrollable artworks */}
-        <div className="w-full flex justify-center pointer-events-auto">
+        <ScrollReveal direction="up" distance={50} duration={0.8} delay={0.15} className="w-full flex justify-center pointer-events-auto">
           <InstagramArtworkCard
             artworks={ARTWORKS}
             currentIdx={activeIdx}
             onSlideChange={setActiveIdx}
           />
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

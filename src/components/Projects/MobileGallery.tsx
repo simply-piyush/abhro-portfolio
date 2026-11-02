@@ -74,12 +74,16 @@ export const MobileGallery: React.FC<MobileGalleryProps> = ({
 
   return (
     <div className="flex md:hidden flex-col h-full w-full justify-between">
-      {/* Mobile Horizontal Snap Carousel */}
+      {/* Mobile Horizontal Snap Carousel without scrollbar (dots below handle pagination) */}
       <div
         ref={carouselRef as any}
         onScroll={handleScroll}
-        className="flex items-stretch gap-3.5 h-[calc(100%-28px)] w-full overflow-x-auto snap-x snap-mandatory no-scrollbar px-3 py-1 scroll-smooth overscroll-x-contain"
-        style={{ WebkitOverflowScrolling: "touch" }}
+        className="flex items-stretch gap-3.5 h-[calc(100%-28px)] w-full overflow-x-auto snap-x snap-mandatory no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden px-3 py-1 scroll-smooth overscroll-x-contain"
+        style={{
+          WebkitOverflowScrolling: "touch",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
       >
         {projects.map((project, idx) => (
           <ProjectCard
