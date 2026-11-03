@@ -1,11 +1,16 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
+import dynamic from "next/dynamic";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { ARTWORKS } from "@/data/artworks";
 import { InstagramArtworkCard } from "./InstagramArtworkCard";
-import { TopographyBackground } from "./TopographyBackground";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+
+const TopographyBackground = dynamic(
+  () => import("./TopographyBackground").then((mod) => mod.TopographyBackground),
+  { ssr: false }
+);
 
 export const Artworks: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState<number>(0);
@@ -58,7 +63,7 @@ export const Artworks: React.FC = () => {
       ref={sectionRef}
       id="artworks"
       aria-label="Artworks Showcase"
-      className="relative w-full bg-black text-white select-none pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-24 md:pb-32 rounded-b-[24px] sm:rounded-b-[36px] md:rounded-b-[48px] border-b border-neutral-900 shadow-2xl z-20 overflow-hidden"
+      className="relative w-full bg-black text-white select-none pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-24 md:pb-32 rounded-b-[24px] sm:rounded-b-[36px] md:rounded-b-[48px] border-b border-neutral-900 shadow-2xl z-20 overflow-hidden content-auto"
     >
       {/* Interactive Topography Background - slowly shows up when scrolled from projects */}
       <motion.div

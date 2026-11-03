@@ -46,7 +46,7 @@ export const Contact: React.FC = () => {
     <section
       id="contact"
       aria-label="Contact Section"
-      className="relative w-full bg-portfolio-bg pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-8 md:px-12"
+      className="relative w-full bg-portfolio-bg pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-8 md:px-12 content-auto"
     >
       <div className="w-full max-w-[1240px] mx-auto">
         {/* Contact Container Box matching Figma Rectangle 14 (rounded-12px, #D9D9D9) */}

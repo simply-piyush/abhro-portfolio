@@ -22,19 +22,60 @@ const narnia = localFont({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://abhro-portfolio.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Abhro Saha — Digital Artist & Visual Storyteller",
-  description: "Portfolio of Abhro Saha: Drawing, Graphic Design, 3D Modeling with Blender, and Visual Storytelling. Bringing creations to life one creation at a time.",
-  keywords: ["Abhro Saha", "Portfolio", "Graphic Design", "Blender", "3D Modeling", "Digital Art", "Animation", "Visual Storytelling"],
+  description:
+    "Portfolio of Abhro Saha: Drawing, Graphic Design, 3D Modeling with Blender, and Visual Storytelling. Bringing creations to life one creation at a time.",
+  keywords: [
+    "Abhro Saha",
+    "Portfolio",
+    "Graphic Design",
+    "Blender",
+    "3D Modeling",
+    "Digital Art",
+    "Animation",
+    "Visual Storytelling",
+  ],
   authors: [{ name: "Abhro Saha" }],
+  creator: "Abhro Saha",
   openGraph: {
-    title: "Abhro Saha — Portfolio",
+    title: "Abhro Saha — Digital Artist & Visual Storyteller",
     description: "Bringing creations to life one creation at a time.",
     type: "website",
     locale: "en_US",
+    siteName: "Abhro Saha Portfolio",
+    images: [
+      {
+        url: "/assets/abhro.png",
+        width: 1004,
+        height: 1004,
+        alt: "Abhro Saha — Digital Artist & Visual Storyteller",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Abhro Saha — Digital Artist & Visual Storyteller",
+    description: "Bringing creations to life one creation at a time.",
+    images: ["/assets/abhro.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
     icon: "/assets/abhro.png",
+    apple: "/assets/abhro.png",
   },
 };
 
@@ -50,7 +91,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${anton.variable} ${inter.variable} ${narnia.variable}`}>
+    <html
+      lang="en"
+      className={`${anton.variable} ${inter.variable} ${narnia.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

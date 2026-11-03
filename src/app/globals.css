@@ -12,24 +12,6 @@
   --font-narina: var(--font-narnia);
 }
 
-@font-face {
-  font-family: 'Narnia';
-  src: url('/fonts/Narnia.otf') format('opentype'),
-       url('/fonts/Narnia.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Narina';
-  src: url('/fonts/Narnia.otf') format('opentype'),
-       url('/fonts/Narnia.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -47,6 +29,7 @@ body {
   background-color: var(--color-bg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
@@ -63,6 +46,19 @@ body {
 .text-stroke-brand-white {
   -webkit-text-stroke: 2px #ff522b;
   color: #ffffff;
+}
+
+/* Content Visibility Optimization for Below-the-Fold Sections */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+/* Hardware accelerated translation */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 /* Custom scrollbar */

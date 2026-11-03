@@ -4,9 +4,9 @@ import React from "react";
 import { Marquee } from "./Marquee";
 import { cn } from "@/lib/utils";
 
-// 24 items per block to ensure the block height exceeds the viewport,
+// 16 items per block to ensure the block height exceeds the viewport,
 // allowing the Marquee's translation loop to repeat with 100% seamless continuity
-const ITEMS = Array.from({ length: 24 }, () => "ABOUT ME");
+const ITEMS = Array.from({ length: 16 }, () => "ABOUT ME");
 
 // Alternating columns: outline variant vs filled variant, and alternating direction (UP / DOWN)
 const COLUMNS = [
@@ -30,7 +30,7 @@ export const AboutBackground: React.FC = () => {
           key={`col-${colIdx}`}
           vertical
           reverse={col.reverse}
-          repeat={4}
+          repeat={2}
           className="h-full overflow-hidden p-0 [--duration:38s] [--gap:1.5rem]"
         >
           {ITEMS.map((text, idx) => (

@@ -93,7 +93,7 @@ export const Hero: React.FC = () => {
 
       const heroEl = heroRef.current;
       if (heroEl) {
-        heroEl.addEventListener("mousemove", handleMouseMove);
+        heroEl.addEventListener("mousemove", handleMouseMove, { passive: true });
       }
 
       return () => {

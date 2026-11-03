@@ -14,6 +14,7 @@ export const HeroPortrait = forwardRef<HTMLDivElement>((props, ref) => {
           width={1004}
           height={1004}
           priority
+          sizes="(max-width: 640px) 96vw, (max-width: 1024px) 80vw, 980px"
           className="w-auto h-[90%] sm:h-[90%] max-h-[82vh] sm:max-h-[800px] lg:max-h-[890px] max-w-none sm:max-w-[96vw] object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)] scale-135 sm:scale-100 origin-bottom transition-transform duration-300"
         />
       </div>
