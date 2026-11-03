@@ -46,10 +46,10 @@ export const Projects: React.FC = () => {
     <section
       id="projects"
       aria-label="Projects Showcase"
-      className="relative w-full min-h-[680px] sm:min-h-[740px] md:min-h-[800px] h-[94dvh] md:h-screen max-h-[1040px] mt-0 z-20 select-none flex flex-col justify-center bg-black rounded-t-[24px] sm:rounded-t-[36px] md:rounded-t-[48px] rounded-b-none overflow-hidden shadow-2xl border-t border-neutral-900 content-auto"
+      className="relative w-full min-h-[700px] sm:min-h-[740px] md:min-h-[800px] h-[94dvh] md:h-screen max-h-[1040px] mt-0 z-20 select-none flex flex-col justify-center bg-black rounded-t-[24px] sm:rounded-t-[36px] md:rounded-t-[48px] rounded-b-none overflow-hidden shadow-2xl border-t border-neutral-900"
     >
-      {/* 100vw Black Container with Inner Content aligned to page max-width and generous top spacing */}
-      <div className="w-full max-w-[1380px] h-full mx-auto px-3 sm:px-6 md:px-10 pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-4 sm:pb-6 md:pb-8 text-white flex flex-col justify-between overflow-hidden">
+      {/* 100vw Black Container with Inner Content aligned to page max-width and generous top spacing to frame below floating navbar */}
+      <div className="w-full max-w-[1380px] h-full mx-auto px-3 sm:px-6 md:px-10 pt-24 sm:pt-24 md:pt-20 lg:pt-24 pb-4 sm:pb-6 md:pb-8 text-white flex flex-col justify-between overflow-hidden">
         {/* Header with Title and Nav Controls */}
         <ProjectsHeader
           activeIdx={activeIdx}

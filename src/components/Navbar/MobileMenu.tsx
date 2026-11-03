@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Instagram, Linkedin, Github } from "lucide-react";
+import { label } from "motion/react-client";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface MobileMenuProps {
 
 const LINKS = [
   { label: "About", href: "#about", id: "about" },
+  {label:"Skills", href:"#skills",id:"skills"},
   { label: "Projects", href: "#projects", id: "projects" },
   { label: "Artworks", href: "#artworks", id: "artworks" },
   { label: "Contact", href: "#contact", id: "contact" },

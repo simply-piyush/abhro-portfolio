@@ -34,12 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
       }
       const el = document.getElementById(id);
       if (el) {
-        // Sections have custom top padding designed to frame content cleanly below floating navbar
-        const elementTop = el.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: Math.max(0, Math.round(elementTop)),
-          behavior: "smooth",
-        });
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   };

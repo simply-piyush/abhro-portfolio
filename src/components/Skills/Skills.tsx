@@ -27,7 +27,7 @@ export const Skills: React.FC = () => {
     <section
       id="skills"
       aria-label="What I Use"
-      className="relative w-full bg-portfolio-bg min-h-[500px] sm:min-h-[580px] md:min-h-[660px] lg:min-h-[740px] xl:min-h-[800px] py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden select-none flex items-center justify-center content-auto"
+      className="relative w-full bg-portfolio-bg min-h-[500px] sm:min-h-[580px] md:min-h-[660px] lg:min-h-[740px] xl:min-h-[800px] py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden select-none flex items-center justify-center"
     >
       {/* Background typography: relative to the page, vertically centered via align-items: center (items-center) */}
       <div className="relative z-0 w-full max-w-[1380px] mx-auto px-3 sm:px-6 md:px-10 pointer-events-none select-none flex items-center">

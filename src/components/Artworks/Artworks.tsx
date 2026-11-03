@@ -63,7 +63,7 @@ export const Artworks: React.FC = () => {
       ref={sectionRef}
       id="artworks"
       aria-label="Artworks Showcase"
-      className="relative w-full bg-black text-white select-none pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-24 md:pb-32 rounded-b-[24px] sm:rounded-b-[36px] md:rounded-b-[48px] border-b border-neutral-900 shadow-2xl z-20 overflow-hidden content-auto"
+      className="relative w-full bg-black text-white select-none pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-24 md:pb-32 rounded-b-[24px] sm:rounded-b-[36px] md:rounded-b-[48px] border-b border-neutral-900 shadow-2xl z-20 overflow-hidden"
     >
       {/* Interactive Topography Background - slowly shows up when scrolled from projects */}
       <motion.div
